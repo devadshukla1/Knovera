@@ -2,7 +2,7 @@
  * Automated component tests for KnowledgeGraphPage (Phase 7 C7.8, C7.9).
  */
 
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Routes, Route } from 'react-router-dom';
 import { KnowledgeGraphPage } from '../pages/KnowledgeGraphPage';
@@ -10,10 +10,9 @@ import { knowledgeGraphApi } from '../api/knowledgeGraphApi';
 import { workspaceApi } from '@/features/workspaces/api/workspaceApi';
 import { renderWithProviders } from '@/test/test-utils';
 import {
-  KnowledgeGraphOverviewResponse,
+  MindMapTreeResponse,
   PaginatedGraphNodesResponse,
   PaginatedGraphRelationshipsResponse,
-  PaginatedGraphSnapshotsResponse,
 } from '../types/knowledgeGraph';
 import { Workspace } from '@/features/workspaces/types/workspace';
 
@@ -57,6 +56,8 @@ vi.mock('cytoscape', () => {
 
 vi.mock('../api/knowledgeGraphApi', () => ({
   knowledgeGraphApi: {
+    getMindMap: vi.fn(),
+    buildMindMap: vi.fn(),
     getOverview: vi.fn(),
     searchNodes: vi.fn(),
     getNodeDetails: vi.fn(),
@@ -87,42 +88,6 @@ const mockWorkspace: Workspace = {
   document_count: 5,
   created_at: '2026-11-01T00:00:00Z',
   updated_at: '2026-11-01T00:00:00Z',
-};
-
-const mockOverview: KnowledgeGraphOverviewResponse = {
-  workspace_id: 'ws-123',
-  has_graph: true,
-  snapshot: {
-    id: 'snap-1',
-    status: 'completed',
-    is_active: true,
-    created_at: '2026-11-07T00:00:00Z',
-    node_count: 15,
-    edge_count: 22,
-    concept_count: 10,
-    entity_count: 5,
-    component_count: 1,
-    isolated_node_count: 0,
-    ontology_version: '1.0.0',
-  },
-  statistics: {
-    isolated_node_count: 0,
-    connected_component_count: 1,
-    density: 0.12,
-    self_loops_count: 0,
-    parallel_edges_count: 2,
-    predicate_distribution: { uses: 12, proposes: 10 },
-    node_type_distribution: { algorithm: 8, model: 7 },
-    node_kind_distribution: { concept: 10, entity: 5 },
-  },
-  capabilities: {
-    node_search: true,
-    neighborhood_expansion: true,
-    relationship_details: true,
-    source_evidence: true,
-    path_exploration: true,
-    snapshot_history: true,
-  },
 };
 
 const mockNodesResponse: PaginatedGraphNodesResponse = {
@@ -184,104 +149,68 @@ const mockRelationshipsResponse: PaginatedGraphRelationshipsResponse = {
   total_pages: 1,
 };
 
-const mockSnapshotsResponse: PaginatedGraphSnapshotsResponse = {
-  items: [mockOverview.snapshot!],
-  total: 1,
-  page: 1,
-  page_size: 20,
-  total_pages: 1,
+const mockMindMap: MindMapTreeResponse = {
+  workspace_id: 'ws-123', workspace_name: mockWorkspace.name,
+  root_node_id: 'root', nodes: [
+    { id: 'root', label: 'Information Retrieval', level: 0, node_type: 'root', children_count: 0 },
+  ], edges: [], total_nodes: 1, total_leaves: 0, depth: 0, source_document_count: 1,
 };
 
-describe('KnowledgeGraphPage (C7.8 & C7.9)', () => {
+vi.mock('@/features/documents/hooks/useDocuments', () => ({
+  useDocuments: () => ({ data: [] }),
+}));
+vi.mock('@/features/topics/hooks/useTopics', () => ({
+  useWorkspaceTopics: () => ({ data: { items: [], total: 0 } }),
+}));
+
+describe('KnowledgeGraphPage', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(workspaceApi.getById).mockResolvedValue(mockWorkspace);
-    vi.mocked(knowledgeGraphApi.getOverview).mockResolvedValue(mockOverview);
+    vi.mocked(knowledgeGraphApi.getMindMap).mockResolvedValue(mockMindMap);
+    vi.mocked(knowledgeGraphApi.buildMindMap).mockResolvedValue(mockMindMap);
     vi.mocked(knowledgeGraphApi.searchNodes).mockResolvedValue(mockNodesResponse);
     vi.mocked(knowledgeGraphApi.getRelationships).mockResolvedValue(mockRelationshipsResponse);
-    vi.mocked(knowledgeGraphApi.listSnapshots).mockResolvedValue(mockSnapshotsResponse);
   });
 
-  it('renders page header, breadcrumbs, and stats panel correctly', async () => {
-    renderWithProviders(
-      <Routes>
-        <Route path="/workspaces/:workspaceId/knowledge-graph" element={<KnowledgeGraphPage />} />
-      </Routes>,
-      { initialEntries: ['/workspaces/ws-123/knowledge-graph'] }
-    );
+  const renderPage = () => renderWithProviders(
+    <Routes><Route path="/workspaces/:workspaceId/knowledge-graph" element={<KnowledgeGraphPage />} /></Routes>,
+    { initialEntries: ['/workspaces/ws-123/knowledge-graph'] }
+  );
 
-    // Header Title
-    expect(await screen.findByRole('heading', { name: 'Knowledge Graph', level: 1 })).toBeInTheDocument();
-
-    // Breadcrumbs
-    expect(screen.getByText('Information Retrieval Workspace')).toBeInTheDocument();
-
-    // Stats ribbon metrics
-    expect(screen.getByText('Total Nodes')).toBeInTheDocument();
-    expect(screen.getByText('15')).toBeInTheDocument();
-    expect(screen.getByText('Relationships')).toBeInTheDocument();
-    expect(screen.getByText('22')).toBeInTheDocument();
+  it('renders the mind map header, workspace link, and hierarchy summary', async () => {
+    renderPage();
+    expect(screen.getByRole('heading', { name: 'Knovera Mind Map', level: 1 })).toBeInTheDocument();
+    expect(await screen.findByRole('link', { name: mockWorkspace.name })).toHaveAttribute('href', '/app/workspaces/ws-123');
+    expect(await screen.findByText('Workspace Hierarchy:')).toBeInTheDocument();
+    expect(knowledgeGraphApi.getMindMap).toHaveBeenCalledWith('ws-123', false);
   });
 
-  it('renders filters, search input, and toolbar', async () => {
-    renderWithProviders(
-      <Routes>
-        <Route path="/workspaces/:workspaceId/knowledge-graph" element={<KnowledgeGraphPage />} />
-      </Routes>,
-      { initialEntries: ['/workspaces/ws-123/knowledge-graph'] }
-    );
-
-    await screen.findByRole('heading', { name: 'Knowledge Graph', level: 1 });
-
-    // Search input
-    expect(screen.getByPlaceholderText('Search concepts or entities...')).toBeInTheDocument();
-
-    // Kind filter toggles
-    expect(screen.getByTitle('Toggle Concepts visibility')).toBeInTheDocument();
-    expect(screen.getByTitle('Toggle Entities visibility')).toBeInTheDocument();
-
-    // Toolbar buttons
-    expect(screen.getByTitle('Zoom In')).toBeInTheDocument();
-    expect(screen.getByTitle('Zoom Out')).toBeInTheDocument();
-    expect(screen.getByTitle('Fit to Screen')).toBeInTheDocument();
+  it('updates concept search and switches to network mode', async () => {
+    renderPage();
+    await screen.findByText('Workspace Hierarchy:');
+    const search = screen.getByPlaceholderText('Search concepts, formulas, definitions, algorithms...');
+    fireEvent.change(search, { target: { value: 'retrieval' } });
+    expect(search).toHaveValue('retrieval');
+    fireEvent.click(screen.getByRole('button', { name: 'Network' }));
+    expect(screen.queryByPlaceholderText('Search concepts, formulas, definitions, algorithms...')).not.toBeInTheDocument();
+    await waitFor(() => expect(knowledgeGraphApi.searchNodes).toHaveBeenCalled());
+    fireEvent.click(screen.getByRole('button', { name: 'Mind Map' }));
+    expect(screen.getByPlaceholderText('Search concepts, formulas, definitions, algorithms...')).toHaveValue('retrieval');
   });
 
-  it('displays empty state when workspace has no active graph', async () => {
-    const emptyOverview: KnowledgeGraphOverviewResponse = {
-      workspace_id: 'ws-123',
-      has_graph: false,
-      snapshot: null,
-      statistics: null,
-      capabilities: mockOverview.capabilities,
-    };
-    vi.mocked(knowledgeGraphApi.getOverview).mockResolvedValueOnce(emptyOverview);
-
-    renderWithProviders(
-      <Routes>
-        <Route path="/workspaces/:workspaceId/knowledge-graph" element={<KnowledgeGraphPage />} />
-      </Routes>,
-      { initialEntries: ['/workspaces/ws-123/knowledge-graph'] }
-    );
-
-    expect(await screen.findByText('No Knowledge Graph Found')).toBeInTheDocument();
-    expect(screen.getByText('Upload Documents')).toBeInTheDocument();
+  it('links to document upload when no documents or map exist', async () => {
+    vi.mocked(knowledgeGraphApi.getMindMap).mockResolvedValue({ ...mockMindMap, nodes: [], total_nodes: 0 });
+    renderPage();
+    expect(await screen.findByText('No Documents in this Workspace')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Upload Documents/i })).toHaveAttribute('href', '/app/workspaces/ws-123/documents');
   });
 
-  it('opens path finder modal when button is clicked', async () => {
-    renderWithProviders(
-      <Routes>
-        <Route path="/workspaces/:workspaceId/knowledge-graph" element={<KnowledgeGraphPage />} />
-      </Routes>,
-      { initialEntries: ['/workspaces/ws-123/knowledge-graph'] }
-    );
-
-    await screen.findByRole('heading', { name: 'Knowledge Graph', level: 1 });
-
-    const pathFinderBtns = screen.getAllByRole('button', { name: /path finder/i });
-    fireEvent.click(pathFinderBtns[0]);
-
-    expect(await screen.findByText('Knowledge Path Explorer')).toBeInTheDocument();
-    expect(screen.getByText('Source Concept / Entity')).toBeInTheDocument();
-    expect(screen.getByText('Target Concept / Entity')).toBeInTheDocument();
+  it('rebuilds the mind map and reports the source document count', async () => {
+    renderPage();
+    await screen.findByText('Workspace Hierarchy:');
+    fireEvent.click(screen.getByRole('button', { name: /Rebuild Mind Map/i }));
+    expect(await screen.findByText('Knowledge Graph successfully rebuilt from 1 workspace document.')).toBeInTheDocument();
+    expect(knowledgeGraphApi.buildMindMap).toHaveBeenCalledWith('ws-123');
   });
 });

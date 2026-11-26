@@ -20,3 +20,15 @@ Object.defineProperty(window, 'matchMedia', {
 if (typeof window.HTMLElement.prototype.scrollIntoView !== 'function') {
   window.HTMLElement.prototype.scrollIntoView = vi.fn();
 }
+
+// JSDOM has no viewport observer; expose visible elements to motion hooks.
+class TestIntersectionObserver {
+  constructor(private callback: IntersectionObserverCallback) {}
+  observe(target: Element) {
+    this.callback([{ isIntersecting: true, target } as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+  }
+  unobserve() {}
+  disconnect() {}
+  takeRecords() { return []; }
+}
+vi.stubGlobal('IntersectionObserver', TestIntersectionObserver);

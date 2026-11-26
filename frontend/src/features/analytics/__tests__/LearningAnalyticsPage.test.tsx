@@ -13,6 +13,11 @@ import {
   ScoreHistoryResponse,
 } from '../types/analytics';
 
+// Assert KPI values independently of spring animation timing.
+vi.mock('@/components/magicui/NumberTicker', () => ({
+  NumberTicker: ({ value }: { value: number }) => <span>{value}</span>,
+}));
+
 vi.mock('../api/analyticsApi', () => ({
   analyticsApi: {
     getOverview: vi.fn(),
@@ -214,13 +219,13 @@ describe('LearningAnalyticsPage Component (C9.8 & C9.7)', () => {
     renderComponent();
 
     expect(await screen.findByText('Learning Analytics & Revision Intelligence')).toBeInTheDocument();
-    expect(screen.getByText('Phase 9 Learner Intelligence')).toBeInTheDocument();
+    expect(screen.getByText('Learner Intelligence Engine')).toBeInTheDocument();
 
     // Check KPI values
     await waitFor(() => {
       expect(screen.getByText('12')).toBeInTheDocument(); // total quiz attempts
-      expect(screen.getByText('82.5%')).toBeInTheDocument(); // average quiz score
-      expect(screen.getByText('85.0%')).toBeInTheDocument(); // accuracy rate
+      expect(screen.getByText('83').parentElement).toHaveTextContent('83%'); // average quiz score
+      expect(screen.getByText('85').parentElement).toHaveTextContent('85%'); // accuracy rate
       expect(screen.getByText('8')).toBeInTheDocument(); // concepts assessed
     });
   });
@@ -260,7 +265,7 @@ describe('LearningAnalyticsPage Component (C9.8 & C9.7)', () => {
   it('allows opening concept revision resources modal', async () => {
     renderComponent();
 
-    const exploreBtn = await screen.findByRole('button', { name: /Explore Revision Materials/i });
+    const exploreBtn = await screen.findByRole('button', { name: /Inspect Study Resources/i });
     fireEvent.click(exploreBtn);
 
     expect(await screen.findByText('Revision Resources')).toBeInTheDocument();

@@ -166,8 +166,8 @@ Some integration and model tests require services, downloaded models, or provide
 ### Upload validation (November 26, 2026)
 
 - Frontend TypeScript compilation and production build passed.
-- 21 focused backend tests passed across configuration, storage, tenant isolation, and security audit modules.
-- Frontend unit tests were blocked at startup by a local esbuild mismatch: Vitest/vite-node expected `0.21.5`, while the installed binary was `0.28.2`. Rebuilding esbuild did not resolve the mismatch.
+- 31 backend CI tests passed, together with the RAG evaluation and ML benchmark scripts.
+- All 103 frontend tests passed across 22 files after restoring omitted source modules, updating stale UI tests, and adding the JSDOM viewport observer mock. A clean `npm ci` resolved the earlier local esbuild mismatch.
 - The full backend suite, browser suite, and fresh-machine setup were not verified during upload preparation.
 
 ## Repository layout

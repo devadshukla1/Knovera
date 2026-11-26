@@ -76,7 +76,7 @@ describe('chatApi Client', () => {
 
       const result = await chatApi.getConversation('ws-1', 'conv-1');
       expect(apiModule.apiFetch).toHaveBeenCalledWith('workspaces/ws-1/conversations/conv-1');
-      expect(result).toEqual(mockPayload);
+      expect(result).toEqual({ ...mockPayload, messages: [{ ...mockMessage, status: undefined, failure_code: null }] });
     });
   });
 

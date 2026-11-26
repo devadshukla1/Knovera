@@ -59,17 +59,15 @@ describe('WorkspaceDetailPage Component', () => {
     expect(screen.getByText('Workspaces')).toBeInTheDocument();
 
     // Check unlocked module capability cards
-    expect(screen.getByText('Documents & Library')).toBeInTheDocument();
+    expect(screen.getByText('Document Library')).toBeInTheDocument();
     expect(screen.getByText('Open Document Library')).toBeInTheDocument();
     expect(screen.getByText('Research Chat')).toBeInTheDocument();
     expect(screen.getByText('Open Research Chat')).toBeInTheDocument();
-    expect(screen.getByText('Knowledge Explorer')).toBeInTheDocument();
+    expect(screen.getByText('Knowledge Graph')).toBeInTheDocument();
     expect(screen.getByText('Study Studio')).toBeInTheDocument();
     expect(screen.getByText('Open Study Studio')).toBeInTheDocument();
     expect(screen.getByText('Learning Analytics')).toBeInTheDocument();
-    expect(screen.getByText('Open Learning Analytics')).toBeInTheDocument();
-    expect(screen.getByText('Research Intelligence')).toBeInTheDocument();
-    expect(screen.getByText('Open Research Intelligence')).toBeInTheDocument();
+    expect(screen.getByText('Open Analytics')).toBeInTheDocument();
   });
 
   it('renders not-found error state when workspace does not exist', async () => {
