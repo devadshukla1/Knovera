@@ -1,0 +1,406 @@
+{
+  "snapshot_id": "snap_test",
+  "corpus_snapshot_hash": "hash123",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "normalization": "l2",
+  "candidate_k_values": [
+    1,
+    2,
+    3,
+    4,
+    100
+  ],
+  "candidates": [
+    {
+      "k": 2,
+      "inertia": 20.81,
+      "inertia_drop": null,
+      "relative_inertia_drop": null,
+      "duration_ms": 80.06,
+      "euclidean_silhouette": {
+        "metric": "euclidean",
+        "overall_mean": 0.544,
+        "overall_median": 0.4301,
+        "overall_min": 0.3893,
+        "overall_max": 0.8191,
+        "negative_count": 0,
+        "negative_percentage": 0.0,
+        "is_sampled": false,
+        "sample_size": 60,
+        "per_cluster": {
+          "0": {
+            "cluster_id": 0,
+            "count": 40,
+            "mean_silhouette": 0.4133,
+            "median_silhouette": 0.4143,
+            "min_silhouette": 0.3893,
+            "max_silhouette": 0.4383,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "1": {
+            "cluster_id": 1,
+            "count": 20,
+            "mean_silhouette": 0.8055,
+            "median_silhouette": 0.8047,
+            "min_silhouette": 0.8011,
+            "max_silhouette": 0.8191,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          }
+        }
+      },
+      "cosine_silhouette": {
+        "metric": "cosine",
+        "overall_mean": 0.6607,
+        "overall_median": 0.539,
+        "overall_min": 0.468,
+        "overall_max": 0.9673,
+        "negative_count": 0,
+        "negative_percentage": 0.0,
+        "is_sampled": false,
+        "sample_size": 60,
+        "per_cluster": {
+          "0": {
+            "cluster_id": 0,
+            "count": 40,
+            "mean_silhouette": 0.51,
+            "median_silhouette": 0.5125,
+            "min_silhouette": 0.468,
+            "max_silhouette": 0.5484,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "1": {
+            "cluster_id": 1,
+            "count": 20,
+            "mean_silhouette": 0.9621,
+            "median_silhouette": 0.9619,
+            "min_silhouette": 0.9604,
+            "max_silhouette": 0.9673,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          }
+        }
+      },
+      "davies_bouldin": 0.7208,
+      "calinski_harabasz": 58.25,
+      "stability": {
+        "random_seeds": [
+          42,
+          43,
+          44
+        ],
+        "pairwise_ari": {
+          "42_vs_43": 1.0,
+          "42_vs_44": 1.0,
+          "43_vs_44": 1.0
+        },
+        "mean_ari": 1.0,
+        "min_ari": 1.0,
+        "stability_score": 1.0
+      },
+      "size_diagnostics": {
+        "total_chunks": 60,
+        "min_size": 20,
+        "max_size": 40,
+        "mean_size": 30.0,
+        "median_size": 30.0,
+        "std_size": 10.0,
+        "max_cluster_proportion": 0.6667,
+        "singleton_count": 0,
+        "very_small_cluster_count": 0
+      }
+    },
+    {
+      "k": 3,
+      "inertia": 2.29,
+      "inertia_drop": 18.52,
+      "relative_inertia_drop": 0.89,
+      "duration_ms": 87.24,
+      "euclidean_silhouette": {
+        "metric": "euclidean",
+        "overall_mean": 0.7969,
+        "overall_median": 0.7973,
+        "overall_min": 0.7873,
+        "overall_max": 0.8125,
+        "negative_count": 0,
+        "negative_percentage": 0.0,
+        "is_sampled": false,
+        "sample_size": 60,
+        "per_cluster": {
+          "0": {
+            "cluster_id": 0,
+            "count": 20,
+            "mean_silhouette": 0.7971,
+            "median_silhouette": 0.7975,
+            "min_silhouette": 0.7873,
+            "max_silhouette": 0.8028,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "1": {
+            "cluster_id": 1,
+            "count": 20,
+            "mean_silhouette": 0.7993,
+            "median_silhouette": 0.7985,
+            "min_silhouette": 0.7943,
+            "max_silhouette": 0.8125,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "2": {
+            "cluster_id": 2,
+            "count": 20,
+            "mean_silhouette": 0.7943,
+            "median_silhouette": 0.7936,
+            "min_silhouette": 0.7876,
+            "max_silhouette": 0.8018,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          }
+        }
+      },
+      "cosine_silhouette": {
+        "metric": "cosine",
+        "overall_mean": 0.9587,
+        "overall_median": 0.9589,
+        "overall_min": 0.9547,
+        "overall_max": 0.9648,
+        "negative_count": 0,
+        "negative_percentage": 0.0,
+        "is_sampled": false,
+        "sample_size": 60,
+        "per_cluster": {
+          "0": {
+            "cluster_id": 0,
+            "count": 20,
+            "mean_silhouette": 0.9588,
+            "median_silhouette": 0.959,
+            "min_silhouette": 0.9547,
+            "max_silhouette": 0.9611,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "1": {
+            "cluster_id": 1,
+            "count": 20,
+            "mean_silhouette": 0.9597,
+            "median_silhouette": 0.9594,
+            "min_silhouette": 0.9576,
+            "max_silhouette": 0.9648,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "2": {
+            "cluster_id": 2,
+            "count": 20,
+            "mean_silhouette": 0.9576,
+            "median_silhouette": 0.9574,
+            "min_silhouette": 0.9549,
+            "max_silhouette": 0.9607,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          }
+        }
+      },
+      "davies_bouldin": 0.2855,
+      "calinski_harabasz": 490.87,
+      "stability": {
+        "random_seeds": [
+          42,
+          43,
+          44
+        ],
+        "pairwise_ari": {
+          "42_vs_43": 1.0,
+          "42_vs_44": 1.0,
+          "43_vs_44": 1.0
+        },
+        "mean_ari": 1.0,
+        "min_ari": 1.0,
+        "stability_score": 1.0
+      },
+      "size_diagnostics": {
+        "total_chunks": 60,
+        "min_size": 20,
+        "max_size": 20,
+        "mean_size": 20.0,
+        "median_size": 20.0,
+        "std_size": 0.0,
+        "max_cluster_proportion": 0.3333,
+        "singleton_count": 0,
+        "very_small_cluster_count": 0
+      }
+    },
+    {
+      "k": 4,
+      "inertia": 2.24,
+      "inertia_drop": 0.05,
+      "relative_inertia_drop": 0.0228,
+      "duration_ms": 99.76,
+      "euclidean_silhouette": {
+        "metric": "euclidean",
+        "overall_mean": 0.541,
+        "overall_median": 0.7957,
+        "overall_min": -0.0019,
+        "overall_max": 0.8125,
+        "negative_count": 1,
+        "negative_percentage": 1.67,
+        "is_sampled": false,
+        "sample_size": 60,
+        "per_cluster": {
+          "0": {
+            "cluster_id": 0,
+            "count": 3,
+            "mean_silhouette": 0.0324,
+            "median_silhouette": 0.0396,
+            "min_silhouette": 0.0157,
+            "max_silhouette": 0.0418,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "1": {
+            "cluster_id": 1,
+            "count": 20,
+            "mean_silhouette": 0.7993,
+            "median_silhouette": 0.7985,
+            "min_silhouette": 0.7943,
+            "max_silhouette": 0.8125,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "2": {
+            "cluster_id": 2,
+            "count": 20,
+            "mean_silhouette": 0.7968,
+            "median_silhouette": 0.7973,
+            "min_silhouette": 0.787,
+            "max_silhouette": 0.8024,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "3": {
+            "cluster_id": 3,
+            "count": 17,
+            "mean_silhouette": 0.0257,
+            "median_silhouette": 0.0278,
+            "min_silhouette": -0.0019,
+            "max_silhouette": 0.0442,
+            "negative_count": 1,
+            "negative_percentage": 5.88,
+            "is_singleton": false
+          }
+        }
+      },
+      "cosine_silhouette": {
+        "metric": "cosine",
+        "overall_mean": 0.6568,
+        "overall_median": 0.9582,
+        "overall_min": -0.005,
+        "overall_max": 0.9648,
+        "negative_count": 1,
+        "negative_percentage": 1.67,
+        "is_sampled": false,
+        "sample_size": 60,
+        "per_cluster": {
+          "0": {
+            "cluster_id": 0,
+            "count": 3,
+            "mean_silhouette": 0.0642,
+            "median_silhouette": 0.078,
+            "min_silhouette": 0.0322,
+            "max_silhouette": 0.0825,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "1": {
+            "cluster_id": 1,
+            "count": 20,
+            "mean_silhouette": 0.9597,
+            "median_silhouette": 0.9594,
+            "min_silhouette": 0.9576,
+            "max_silhouette": 0.9648,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "2": {
+            "cluster_id": 2,
+            "count": 20,
+            "mean_silhouette": 0.9587,
+            "median_silhouette": 0.9589,
+            "min_silhouette": 0.9546,
+            "max_silhouette": 0.9609,
+            "negative_count": 0,
+            "negative_percentage": 0.0,
+            "is_singleton": false
+          },
+          "3": {
+            "cluster_id": 3,
+            "count": 17,
+            "mean_silhouette": 0.05,
+            "median_silhouette": 0.0539,
+            "min_silhouette": -0.005,
+            "max_silhouette": 0.0856,
+            "negative_count": 1,
+            "negative_percentage": 5.88,
+            "is_singleton": false
+          }
+        }
+      },
+      "davies_bouldin": 1.3897,
+      "calinski_harabasz": 329.45,
+      "stability": {
+        "random_seeds": [
+          42,
+          43,
+          44
+        ],
+        "pairwise_ari": {
+          "42_vs_43": 0.802,
+          "42_vs_44": 1.0,
+          "43_vs_44": 0.802
+        },
+        "mean_ari": 0.868,
+        "min_ari": 0.802,
+        "stability_score": 0.868
+      },
+      "size_diagnostics": {
+        "total_chunks": 60,
+        "min_size": 3,
+        "max_size": 20,
+        "mean_size": 15.0,
+        "median_size": 18.5,
+        "std_size": 7.04,
+        "max_cluster_proportion": 0.3333,
+        "singleton_count": 0,
+        "very_small_cluster_count": 0
+      }
+    }
+  ],
+  "invalid_candidates": {
+    "1": "K=1 is less than minimum allowed K=2.",
+    "100": "K=100 is greater than or equal to sample count N=60."
+  },
+  "recommended_k": 3,
+  "selection_status": "conclusive",
+  "selection_rationale": "Candidate K=3 achieved the highest composite ranking across evaluated criteria. Cosine Silhouette: 0.9587 (Euclidean: 0.7969). Davies-Bouldin: 0.2855, Calinski-Harabasz: 490.87. Cluster partition stability: mean ARI=1.0000.",
+  "warnings": [],
+  "timestamp": "2026-11-25T15:14:57.204732+00:00"
+}

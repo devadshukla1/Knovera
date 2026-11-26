@@ -1,0 +1,73 @@
+{
+  "dataset_name": "knovera_query_intent_benchmark",
+  "taxonomy_version": "1.0.0",
+  "preprocessing_version": "1.0.0",
+  "random_seed": 42,
+  "summary": {
+    "total_raw_examples": 455,
+    "total_processed_examples": 455,
+    "train_examples": 312,
+    "dev_examples": 65,
+    "test_examples": 78,
+    "category_count": 13,
+    "unreviewed_count": 455,
+    "duplicate_count": 0
+  },
+  "class_distribution": {
+    "counts": {
+      "ambiguous": 35,
+      "analytical_reasoning": 35,
+      "comparison": 35,
+      "definition": 35,
+      "explanation": 35,
+      "factual_lookup": 35,
+      "general_conversation": 35,
+      "information_extraction": 35,
+      "procedural_guidance": 35,
+      "recommendation": 35,
+      "source_evidence": 35,
+      "summarization": 35,
+      "unsupported_action": 35
+    },
+    "percentages": {
+      "ambiguous": 7.69,
+      "analytical_reasoning": 7.69,
+      "comparison": 7.69,
+      "definition": 7.69,
+      "explanation": 7.69,
+      "factual_lookup": 7.69,
+      "general_conversation": 7.69,
+      "information_extraction": 7.69,
+      "procedural_guidance": 7.69,
+      "recommendation": 7.69,
+      "source_evidence": 7.69,
+      "summarization": 7.69,
+      "unsupported_action": 7.69
+    }
+  },
+  "split_distribution": {
+    "train": 312,
+    "dev": 65,
+    "test": 78
+  },
+  "source_type_distribution": {
+    "synthetic_seed": 455
+  },
+  "splits": {
+    "train": {
+      "path": "splits/train.jsonl",
+      "count": 312,
+      "ratio": 0.686
+    },
+    "dev": {
+      "path": "splits/dev.jsonl",
+      "count": 65,
+      "ratio": 0.143
+    },
+    "test": {
+      "path": "splits/test.jsonl",
+      "count": 78,
+      "ratio": 0.171
+    }
+  }
+}

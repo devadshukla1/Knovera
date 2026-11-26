@@ -1,0 +1,30 @@
+{
+  "name": "knovera_synthetic_smoke_test",
+  "version": "1.0.0",
+  "created_at": "2026-11-06T12:00:00Z",
+  "dataset_type": "synthetic_smoke_test",
+  "description": "Deterministic benchmark evaluation dataset for Knovera retrieval systems (Dense vs BM25 vs Hybrid RRF vs RRF+Cross-Encoder).",
+  "license": "Internal Research & Testing",
+  "splits": {
+    "dev": {
+      "queries_count": 8,
+      "description": "Development split for parameter tuning (k1, b, RRF-k, Reranker candidates)"
+    },
+    "test": {
+      "queries_count": 8,
+      "description": "Holdout test split for unbiased comparative performance measurement"
+    }
+  },
+  "corpus_size": 24,
+  "domains": [
+    "Computer Science & Networking",
+    "Molecular Biology & Genetics",
+    "Quantum & Solid State Physics"
+  ],
+  "grading_scale": {
+    "0": "Not relevant",
+    "1": "Marginally relevant / related domain",
+    "2": "Relevant / answers part of query",
+    "3": "Highly relevant / direct authoritative answer"
+  }
+}

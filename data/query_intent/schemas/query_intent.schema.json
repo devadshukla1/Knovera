@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KnoveraQueryIntentRecord",
+  "description": "Schema for Knovera Query Intent Classification dataset records (C5.2).",
+  "type": "object",
+  "required": [
+    "example_id",
+    "query_text",
+    "intent",
+    "attributes",
+    "source_type",
+    "annotation_status",
+    "taxonomy_version"
+  ],
+  "properties": {
+    "example_id": {
+      "type": "string",
+      "pattern": "^qi_[a-zA-Z0-9_-]+$",
+      "description": "Unique identifier for the query intent record."
+    },
+    "query_text": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The natural language query text."
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "factual_lookup",
+        "definition",
+        "explanation",
+        "comparison",
+        "summarization",
+        "procedural_guidance",
+        "analytical_reasoning",
+        "information_extraction",
+        "source_evidence",
+        "recommendation",
+        "general_conversation",
+        "unsupported_action",
+        "ambiguous"
+      ],
+      "description": "The primary single intent label assigned to this query."
+    },
+    "attributes": {
+      "type": "object",
+      "required": [
+        "requires_conversation_context",
+        "requires_multi_source_evidence",
+        "requests_explicit_citations",
+        "contains_ambiguous_reference"
+      ],
+      "properties": {
+        "requires_conversation_context": {
+          "type": "boolean",
+          "description": "True if resolving requires context from previous conversation turns."
+        },
+        "requires_multi_source_evidence": {
+          "type": "boolean",
+          "description": "True if resolving requires synthesizing across multiple distinct documents."
+        },
+        "requests_explicit_citations": {
+          "type": "boolean",
+          "description": "True if the query explicitly asks for citations, quotes, or page numbers."
+        },
+        "contains_ambiguous_reference": {
+          "type": "boolean",
+          "description": "True if query contains unresolved anaphora or deictic pronouns."
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "synthetic_seed",
+        "manually_curated",
+        "human_annotated",
+        "anonymized_opt_in"
+      ],
+      "description": "Provenance origin of the query example."
+    },
+    "annotation_status": {
+      "type": "string",
+      "enum": [
+        "pending_human_review",
+        "human_reviewed",
+        "adjudicated"
+      ],
+      "description": "Quality assurance and review status."
+    },
+    "taxonomy_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Taxonomy version under which this record was annotated."
+    },
+    "split": {
+      "type": "string",
+      "enum": ["train", "dev", "test"],
+      "description": "Assigned evaluation split membership (train, dev, or test)."
+    },
+    "paraphrase_group_id": {
+      "type": "string",
+      "description": "Optional group ID for keeping near-duplicate queries in the same split."
+    }
+  },
+  "additionalProperties": false
+}

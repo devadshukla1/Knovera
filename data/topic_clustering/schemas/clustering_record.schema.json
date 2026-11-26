@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClusteringChunkRecord",
+  "description": "Schema for individual document chunk records within Knovera topic clustering datasets.",
+  "type": "object",
+  "required": [
+    "chunk_id",
+    "document_id",
+    "workspace_id",
+    "chunk_index",
+    "content_hash",
+    "text_preview"
+  ],
+  "properties": {
+    "chunk_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID string of the document chunk"
+    },
+    "document_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID string of the parent document"
+    },
+    "workspace_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID string of the workspace ensuring multi-tenant isolation"
+    },
+    "chunk_index": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "0-based sequential index of the chunk in the document"
+    },
+    "page_number": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "description": "1-based page number if available (e.g. from PDF)"
+    },
+    "token_count": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Estimated token count of the chunk"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 hash of the canonical chunk text"
+    },
+    "text_preview": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "Truncated preview snippet of chunk text"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CorpusChunk",
+  "type": "object",
+  "required": ["id", "document_filename", "domain", "content", "page_start", "page_end"],
+  "properties": {
+    "id": { "type": "string" },
+    "document_filename": { "type": "string" },
+    "domain": { "type": "string" },
+    "section_title": { "type": ["string", "null"] },
+    "content": { "type": "string", "minLength": 10 },
+    "page_start": { "type": "integer", "minimum": 1 },
+    "page_end": { "type": "integer", "minimum": 1 }
+  }
+}

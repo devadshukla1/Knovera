@@ -1,0 +1,16 @@
+{"query_id": "q_001", "split": "dev", "category": "technical_acronym", "query": "How does the TCP three-way handshake establish reliable connections?"}
+{"query_id": "q_002", "split": "dev", "category": "exact_keyword", "query": "B-Tree vs B+ tree leaf nodes and page pointers"}
+{"query_id": "q_003", "split": "dev", "category": "conceptual", "query": "What consensus mechanism is used by Raft for leader election and log replication?"}
+{"query_id": "q_004", "split": "dev", "category": "technical_acronym", "query": "Role of single guide RNA and protospacer adjacent motif PAM in CRISPR-Cas9"}
+{"query_id": "q_005", "split": "dev", "category": "exact_keyword", "query": "Glycolysis rate-limiting committed step phosphofructokinase-1 ATP yield"}
+{"query_id": "q_006", "split": "dev", "category": "comparative", "query": "Difference between CD4+ helper T cells and CD8+ cytotoxic T cells in MHC presentation"}
+{"query_id": "q_007", "split": "dev", "category": "conceptual", "query": "How does Bell's theorem demonstrate violation of local hidden-variable theories?"}
+{"query_id": "q_008", "split": "dev", "category": "technical_acronym", "query": "Phonon-mediated Cooper pairs in BCS theory of superconductivity"}
+{"query_id": "q_009", "split": "test", "category": "comparative", "query": "Comparison of connectionless UDP datagrams with TCP stream delivery"}
+{"query_id": "q_010", "split": "test", "category": "exact_keyword", "query": "MemTable and SSTables write optimization in LSM-Tree storage engines"}
+{"query_id": "q_011", "split": "test", "category": "conceptual", "query": "How does Static Single Assignment SSA intermediate representation handle variable definitions?"}
+{"query_id": "q_012", "split": "test", "category": "technical_acronym", "query": "Semiconservative DNA replication Okazaki fragments DNA helicase ligase"}
+{"query_id": "q_013", "split": "test", "category": "conceptual", "query": "Electrochemical proton gradient driving ATP synthase in mitochondrial oxidative phosphorylation"}
+{"query_id": "q_014", "split": "test", "category": "technical_acronym", "query": "How AlphaFold2 predicts 3D protein structures using multiple sequence alignments"}
+{"query_id": "q_015", "split": "test", "category": "exact_keyword", "query": "Time-independent Schrodinger equation energy eigenvalues bound state wavefunctions"}
+{"query_id": "q_016", "split": "test", "category": "comparative", "query": "Maximum theoretical efficiency in Carnot cycle and second law entropy"}

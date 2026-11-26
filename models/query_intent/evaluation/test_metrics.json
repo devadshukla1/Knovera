@@ -1,0 +1,595 @@
+{
+  "selected_model": "logistic_regression",
+  "test_metrics": {
+    "accuracy": 0.8333,
+    "macro_precision": 0.863,
+    "macro_recall": 0.8333,
+    "macro_f1": 0.833,
+    "weighted_precision": 0.863,
+    "weighted_recall": 0.8333,
+    "weighted_f1": 0.833,
+    "total_samples": 78,
+    "labels": [
+      "ambiguous",
+      "analytical_reasoning",
+      "comparison",
+      "definition",
+      "explanation",
+      "factual_lookup",
+      "general_conversation",
+      "information_extraction",
+      "procedural_guidance",
+      "recommendation",
+      "source_evidence",
+      "summarization",
+      "unsupported_action"
+    ],
+    "per_class": {
+      "ambiguous": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6667,
+        "support": 6
+      },
+      "analytical_reasoning": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 6
+      },
+      "comparison": {
+        "precision": 0.5556,
+        "recall": 0.8333,
+        "f1": 0.6667,
+        "support": 6
+      },
+      "definition": {
+        "precision": 1.0,
+        "recall": 0.8333,
+        "f1": 0.9091,
+        "support": 6
+      },
+      "explanation": {
+        "precision": 0.8571,
+        "recall": 1.0,
+        "f1": 0.9231,
+        "support": 6
+      },
+      "factual_lookup": {
+        "precision": 0.625,
+        "recall": 0.8333,
+        "f1": 0.7143,
+        "support": 6
+      },
+      "general_conversation": {
+        "precision": 1.0,
+        "recall": 0.8333,
+        "f1": 0.9091,
+        "support": 6
+      },
+      "information_extraction": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 6
+      },
+      "procedural_guidance": {
+        "precision": 0.6667,
+        "recall": 0.6667,
+        "f1": 0.6667,
+        "support": 6
+      },
+      "recommendation": {
+        "precision": 1.0,
+        "recall": 0.6667,
+        "f1": 0.8,
+        "support": 6
+      },
+      "source_evidence": {
+        "precision": 0.8,
+        "recall": 0.6667,
+        "f1": 0.7273,
+        "support": 6
+      },
+      "summarization": {
+        "precision": 0.8571,
+        "recall": 1.0,
+        "f1": 0.9231,
+        "support": 6
+      },
+      "unsupported_action": {
+        "precision": 0.8571,
+        "recall": 1.0,
+        "f1": 0.9231,
+        "support": 6
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "ambiguous",
+        "analytical_reasoning",
+        "comparison",
+        "definition",
+        "explanation",
+        "factual_lookup",
+        "general_conversation",
+        "information_extraction",
+        "procedural_guidance",
+        "recommendation",
+        "source_evidence",
+        "summarization",
+        "unsupported_action"
+      ],
+      "counts": [
+        [
+          3,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          4,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "normalized": [
+        [
+          0.5,
+          0.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.8333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1667,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.8333,
+          0.0,
+          0.1667,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1667,
+          0.8333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1667
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.1667,
+          0.0,
+          0.0,
+          0.1667,
+          0.0,
+          0.0,
+          0.6667,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1667,
+          0.6667,
+          0.1667,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1667,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6667,
+          0.1667,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "calibration": {
+      "log_loss": 0.9991,
+      "brier_score": 0.4036,
+      "ece": 0.3333,
+      "mce": 0.5579,
+      "n_bins": 10,
+      "bin_details": [
+        {
+          "bin": "0.1-0.2",
+          "count": 5,
+          "accuracy": 0.6,
+          "confidence": 0.1597,
+          "abs_diff": 0.4403
+        },
+        {
+          "bin": "0.2-0.3",
+          "count": 11,
+          "accuracy": 0.6364,
+          "confidence": 0.2381,
+          "abs_diff": 0.3983
+        },
+        {
+          "bin": "0.3-0.4",
+          "count": 10,
+          "accuracy": 0.9,
+          "confidence": 0.3421,
+          "abs_diff": 0.5579
+        },
+        {
+          "bin": "0.4-0.5",
+          "count": 11,
+          "accuracy": 0.8182,
+          "confidence": 0.4407,
+          "abs_diff": 0.3774
+        },
+        {
+          "bin": "0.5-0.6",
+          "count": 9,
+          "accuracy": 0.7778,
+          "confidence": 0.5412,
+          "abs_diff": 0.2366
+        },
+        {
+          "bin": "0.6-0.7",
+          "count": 8,
+          "accuracy": 1.0,
+          "confidence": 0.6364,
+          "abs_diff": 0.3636
+        },
+        {
+          "bin": "0.7-0.8",
+          "count": 14,
+          "accuracy": 0.9286,
+          "confidence": 0.7461,
+          "abs_diff": 0.1824
+        },
+        {
+          "bin": "0.8-0.9",
+          "count": 8,
+          "accuracy": 1.0,
+          "confidence": 0.8536,
+          "abs_diff": 0.1464
+        },
+        {
+          "bin": "0.9-1.0",
+          "count": 2,
+          "accuracy": 0.5,
+          "confidence": 0.9604,
+          "abs_diff": 0.4604
+        }
+      ]
+    },
+    "timing": {
+      "predict_duration_ms": 6.33,
+      "per_query_predict_ms": 0.081
+    }
+  }
+}
