@@ -196,6 +196,9 @@ Private `.env` files, uploaded documents, local databases, model caches, depende
 
 ## Documentation
 
+- [Summer Internship Report (PDF)](docs/reports/Summer_Internship_Report.pdf)
+- [Knovera Project Presentation (PDF)](docs/reports/Knovera_Project_Presentation.pdf)
+
 - [Documentation index](docs/README.md)
 - [Windows setup and operations](docs/local_setup_windows.md)
 - [System architecture](docs/SYSTEM_ARCHITECTURE.md)
